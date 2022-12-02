@@ -4,7 +4,6 @@
 
 #include "day1.h"
 #include <string>
-#include <iostream>
 
 
 /**
