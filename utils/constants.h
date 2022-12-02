@@ -1,0 +1,8 @@
+//
+// Created by Richard Vogel on 02.12.22.
+//
+
+#ifndef ADVENT_OF_CODE_2022_CONSTANTS_H
+#define ADVENT_OF_CODE_2022_CONSTANTS_H
+
+#endif //ADVENT_OF_CODE_2022_CONSTANTS_H
