@@ -16,7 +16,9 @@ int main() {
     string inDay1 = FileUtil::readFile(workDirStr + "/data/day1.txt");
     auto lines = FileUtil::splitLines(inDay1);
     Day1 day1(lines);
-    cout << day1.part1() << endl;
-    cout << day1.part2() << endl;
+    cout << "Day 1" << endl << "=====" << endl;
+    cout << "Part 1: " << day1.part1() << endl;
+    cout << "Part 2: " <<day1.part2() << endl;
+
     return 0;
 }

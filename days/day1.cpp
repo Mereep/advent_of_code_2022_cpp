@@ -8,6 +8,20 @@
 
 Day1::Day1(const std::vector<std::string>& lines) : Day(lines) {}
 
+/**
+ * given a list of number strings as
+ *
+ * ```
+ * 11
+ * 12
+ *
+ * 22
+ * 33
+ * ```
+ * will return a vector of sums of the groups (here: 23 and 55)
+ * @param lines
+ * @return vector of group sums
+ */
 std::vector<uint64_t> count(const std::vector<std::string>& lines) {
     std::vector<uint64_t> sums;
     uint64_t currSum = 0;
@@ -27,6 +41,7 @@ std::vector<uint64_t> count(const std::vector<std::string>& lines) {
 std::string Day1::part1() {
     std::vector<uint64_t> sums = count(this->lines);
     auto max = *std::max_element(sums.begin(), sums.end());
+
     return std::to_string(max);
 }
 
