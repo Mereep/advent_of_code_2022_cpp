@@ -6,7 +6,6 @@
 #include <string>
 #include <iostream>
 
-Day1::Day1(const std::vector<std::string>& lines) : Day(lines) {}
 
 /**
  * given a list of number strings as
@@ -37,6 +36,9 @@ std::vector<uint64_t> count(const std::vector<std::string>& lines) {
 
     return sums;
 }
+
+Day1::Day1(const std::vector<std::string>& lines) : Day(lines) {}
+
 // implement part1 and part2 here
 std::string Day1::part1() {
     std::vector<uint64_t> sums = count(this->lines);
