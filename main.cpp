@@ -3,9 +3,9 @@
 #include "utils/file.h"
 #include "days/day1.h"
 #include "days/day2.h"
+#include "days/day3.h"
 
 using namespace FileUtil;
-using namespace MiscUtils;
 
 int main() {
     char* workDir = getenv("WORK_DIR");
@@ -21,7 +21,7 @@ int main() {
     Day1 day1(lines);
     cout << "Day 1" << endl << "=====" << endl;
     cout << "Part 1: " << day1.part1() << endl;
-    cout << "Part 2: " <<day1.part2() << endl;
+    cout << "Part 2: " << day1.part2() << endl;
 
     // Day2(std::vector<std::string>());
     //Day2 day2 = Day::fromFile<Day2>(workDirStr + "/data/day2.txt");
@@ -34,6 +34,13 @@ int main() {
     cout << "Day 2" << endl << "=====" << endl;
     cout << "Part 1: " << day2.part1() << endl;
     cout << "Part 2: " << day2.part2() << endl;
+
+    string inDay3 = FileUtil::readFile(workDirStr + "/data/day3.txt");
+    auto lines3 = FileUtil::splitLines(inDay3);
+    Day3 day3(lines3);
+    cout << "Day 3" << endl << "=====" << endl;
+    cout << "Part 1: " << day3.part1() << endl;
+    cout << "Part 2: " << day3.part2() << endl;
 
     return 0;
 }

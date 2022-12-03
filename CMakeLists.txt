@@ -4,4 +4,17 @@ project(advent_of_code_2022)
 set(CMAKE_CXX_STANDARD 23)
 add_definitions(-std=c++11)
 
-add_executable(main.cpp utils/file.cpp utils/file.h utils/constants.h days/shared/base_day.cpp days/day2.h days/day1.h days/day1.cpp days/day2.cpp days/shared/base_day.h main.cpp utils/misc.cpp utils/misc.h)
+add_executable(
+        main.cpp
+        utils/misc.h
+        utils/misc.cpp
+        utils/file.cpp
+        utils/file.h
+        utils/constants.h
+        days/shared/base_day.h
+        days/shared/base_day.cpp
+        days/day1.cpp days/day1.h
+        days/day2.cpp days/day2.h
+        days/day3.cpp days/day3.h
+        main.cpp
+)
