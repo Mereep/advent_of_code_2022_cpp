@@ -17,7 +17,7 @@ typedef map<char, uint> rucksack_content1_t;
 // just two Rucksacks
 typedef tuple<rucksack_content1_t, rucksack_content1_t> rucksack_content2_t;
 
-Day3::Day3(const std::vector<std::string> &lines) : Day(lines) {}
+Day3::Day3(const vector<string> &lines) : Day(lines) {}
 
 /***
  * Counts the occurrences of letters in the string
@@ -27,8 +27,8 @@ Day3::Day3(const std::vector<std::string> &lines) : Day(lines) {}
  */
 rucksack_content1_t countContents1(const string &line) {
     rucksack_content1_t contents;
-    auto lenRucksack = line.length();
-    for (uint i = 0; i < lenRucksack; i++) {
+    auto len_rucksack = line.length();
+    for (uint i = 0; i < len_rucksack; i++) {
         char c = line[i];
 
         auto pos = contents.find(c);
@@ -57,7 +57,7 @@ uint priority(char c) {
         return c - 'A' + 27;
     }
 
-    throw std::invalid_argument("Invalid character: " + to_string(c));
+    throw invalid_argument("Invalid character: " + to_string(c));
 }
 
 /***
@@ -81,7 +81,7 @@ std::string Day3::part1() {
     for (const string &line: lines) {
         // interpret line as two rucksacks
         auto contents = countContents2(line);
-        // .. and get the contents of each rucksack
+        // ... and get the contents of each Rucksack
         auto contents1 = get<0>(contents);
         auto contents2 = get<1>(contents);
 
@@ -99,7 +99,7 @@ std::string Day3::part1() {
 
 std::string Day3::part2() {
 
-    // each 3 lines make up one chunk of 3 Elves
+    // each 3 lines make up one chunk of 3 Elves' rucksacks
     auto n_lines = lines.size();
     uint n_chunks = int(n_lines / 3);
     uint sum = 0;
@@ -113,7 +113,8 @@ std::string Day3::part2() {
         // iterate over one of the rucksack
         for (auto &[item, _]: contents1) {
             // and find an item which is in all 3 of them (the iterated one and the other two)
-            if (contents2.find(item) != contents2.end() && contents3.find(item) != contents3.end()) {
+            if (contents2.find(item) != contents2.end() &&
+                contents3.find(item) != contents3.end()) {
                 // get the priority of the 3-times item
                 sum += priority(item);
                 continue; // we only count one occurrence

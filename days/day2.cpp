@@ -11,7 +11,7 @@ using namespace std;
 
 
 // every game situation has some defined points (worth)
-std::map<string, uint> GAME_TO_POINTS = {
+const std::map<string, uint> GAME_TO_POINTS = {
         {"AX", 3}, // Rock -> Rock == Tie
         {"AY", 6}, // Rock -> Paper == Win
         {"AZ", 0}, // Rock -> Scissors = Loose
@@ -25,7 +25,7 @@ std::map<string, uint> GAME_TO_POINTS = {
 };
 
 // Every move has defined points (worth)
-std::map<char, uint> SELECTION_TO_POINTS = {
+const std::map<char, uint> SELECTION_TO_POINTS = {
         {'X', 1},
         {'Y', 2},
         {'Z', 3},
@@ -33,7 +33,7 @@ std::map<char, uint> SELECTION_TO_POINTS = {
 
 
 // task 2 selects a move by the wish to win / loose or tie given the other players move
-std::map<string, char> SELECTIONS = {
+const std::map<string, char> SELECTIONS = {
         {"AX", 'Z'},
         {"AY", 'X'},
         {"AZ", 'Y'},

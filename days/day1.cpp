@@ -4,7 +4,7 @@
 
 #include "day1.h"
 #include <string>
-
+using namespace std;
 
 /**
  * given a list of number strings as
@@ -20,36 +20,36 @@
  * @param lines
  * @return vector of group sums
  */
-std::vector<uint64_t> count(const std::vector<std::string>& lines) {
-    std::vector<uint64_t> sums;
+vector<uint64_t> count(const vector<string>& lines) {
+    vector<uint64_t> sums;
     uint64_t currSum = 0;
 
-    for(const std::string& line : lines) {
+    for(const string& line : lines) {
         if (line.empty()) {
             sums.push_back(currSum);
             currSum = 0;
         } else {
-            currSum += std::stoi(line);
+            currSum += stoi(line);
         }
     }
 
     return sums;
 }
 
-Day1::Day1(const std::vector<std::string>& lines) : Day(lines) {}
+Day1::Day1(const vector<string>& lines) : Day(lines) {}
 
 // implement part1 and part2 here
-std::string Day1::part1() {
-    std::vector<uint64_t> sums = count(this->lines);
-    auto max = *std::max_element(sums.begin(), sums.end());
+string Day1::part1() {
+    vector<uint64_t> sums = count(this->lines);
+    auto max = *max_element(sums.begin(), sums.end());
 
-    return std::to_string(max);
+    return to_string(max);
 }
 
-std::string Day1::part2() {
-    std::vector<uint64_t> sums = count(this->lines);
-    std::sort(sums.begin(), sums.end());
-    std::reverse(sums.begin(), sums.end());
+string Day1::part2() {
+    vector<uint64_t> sums = count(this->lines);
+    sort(sums.begin(), sums.end());
+    reverse(sums.begin(), sums.end());
 
-    return std::to_string(sums.at(0) + sums.at(1) + sums.at(2));
+    return to_string(sums.at(0) + sums.at(1) + sums.at(2));
 }
