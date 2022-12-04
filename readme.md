@@ -1,6 +1,6 @@
 # Advent of Code 2022
-Yearly christmas-themed programming puzzles. Each puzzle has a input file (data) and two tasks acting upon then.
-See the authors [Advent of Code](https://adventofcode.com/2022) website for more information.<br />
+Yearly christmas-themed programming puzzles. Each puzzle has a input file (data) and two tasks acting on this data.
+See the authors website [Advent of Code](https://adventofcode.com/2022) for more information.<br />
 <br/>
 **Hint**: This is just for personal fun, please don't expect any quality code here:
 I do **never** write C++ otherwise.
