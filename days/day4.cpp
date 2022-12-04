@@ -22,10 +22,12 @@ tuple<uint, uint> parseSingleAssignment(const string& assignment) {
 }
 
 /**
- * Holds the range of two Assihnments
+ * Holds the ranges of two Assignments
+ * which sourced by one line of input data
+ * e.g., "1-3,5-7"
  */
 struct Assignment {
-    // read as from...to (inclusive)
+    // read as range [from,...,to] (inclusive)
     tuple<uint, uint> first;
     tuple<uint, uint> second;
 
