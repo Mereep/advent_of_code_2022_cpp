@@ -13,10 +13,10 @@ add_executable(
         utils/constants.h
         days/shared/base_day.h
         days/shared/base_day.cpp
-        days/day1.cpp days/day1.h
-        days/day2.cpp days/day2.h
-        days/day3.cpp days/day3.h
-        days/day4.cpp days/day4.h
-        days/day5.cpp days/day5.h
+        days/day1/day1.cpp days/day1/day1.h
+        days/day2/day2.cpp days/day2/day2.h
+        days/day3/day3.cpp days/day3/day3.h
+        days/day4/day4.cpp days/day4/day4.h
+        days/day5/day5.cpp days/day5/day5.h
         main.cpp
 )

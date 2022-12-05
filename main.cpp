@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
 #include "utils/file.h"
-#include "days/day1.h"
-#include "days/day2.h"
-#include "days/day3.h"
-#include "days/day4.h"
-#include "days/day5.h"
+#include "days/day1/day1.h"
+#include "days/day2/day2.h"
+#include "days/day3/day3.h"
+#include "days/day4/day4.h"
+#include "days/day5/day5.h"
 
 using namespace FileUtil;
 

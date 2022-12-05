@@ -5,7 +5,7 @@
 #ifndef ADVENT_OF_CODE_2022_DAY2_H
 #define ADVENT_OF_CODE_2022_DAY2_H
 
-#include "shared/base_day.h"
+#include "../shared/base_day.h"
 
 class Day2 : public Day {
 public:

@@ -8,7 +8,7 @@
 using namespace std;
 using namespace FileUtil;
 
-#include "../days/day2.h"
+#include "../days/day2/day2.h"
 
 namespace MiscUtils {
 
