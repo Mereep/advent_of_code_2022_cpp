@@ -137,7 +137,11 @@ Instruction parseInstruction(const string& line) {
     };
 };
 
-
+/*** will store the whole game state
+ * - some stacks of items
+ * - all instructions that should be executed
+ * - the current instruction number `currStep`
+ */
 struct GameField {
     map<uint, stack<char>> stacks; // piles of objects
     vector<Instruction> instructions; // instructions to move objects
@@ -218,10 +222,12 @@ struct GameField {
         currStep++;
     }
 
+    /** how many instructions are available? */
     [[nodiscard]] uint instructionCount() const {
         return static_cast<uint>(instructions.size());
     }
 
+    /** gets the chars of the top most row of each stack */
     vector<char> topRow() {
         vector<char> top_row;
         for (auto& stack: stacks) {
