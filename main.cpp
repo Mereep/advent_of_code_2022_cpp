@@ -6,6 +6,7 @@
 #include "days/day3/day3.h"
 #include "days/day4/day4.h"
 #include "days/day5/day5.h"
+#include "days/day6/day6.h"
 
 using namespace FileUtil;
 
@@ -54,8 +55,16 @@ int main() {
     string inDay5 = FileUtil::readFile(workDirStr + "/data/day5.txt");
     auto lines5 = FileUtil::splitLines(inDay5);
     Day5 day5(lines5);
-    cout << "Day 6" << endl << "=====" << endl;
+    cout << "Day 5" << endl << "=====" << endl;
     cout << "Part 1: " << day5.part1() << endl;
     cout << "Part 2: " << day5.part2() << endl;
+
+    string inDay6 = FileUtil::readFile(workDirStr + "/data/day6.txt");
+    auto lines6 = FileUtil::splitLines(inDay6);
+    Day6 day6(lines6);
+    cout << "Day 6" << endl << "=====" << endl;
+    cout << "Part 1: " << day6.part1() << endl;
+    cout << "Part 2: " << day6.part2() << endl;
+
     return 0;
 }
