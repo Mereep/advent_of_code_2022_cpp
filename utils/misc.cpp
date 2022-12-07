@@ -1,8 +1,11 @@
 //
 // Created by Richard Vogel on 02.12.22.
 //
-#include "file.h"
 #include <iostream>
+#include <regex>
+#include <string>
+
+#include "file.h"
 #include "misc.h"
 
 using namespace std;
@@ -23,4 +26,15 @@ namespace MiscUtils {
         cout << "Part 2: " << d.part2() << endl;
     }
 
+    string trim(const string& str) {
+        return regex_replace(str, regex("\\s+"), string(""));
+    }
+
+    string join(const vector<string>& elements, const string& sep) {
+        string result;
+        for (const string& element : elements) {
+            result += element + sep;
+        }
+        return result.substr(0, result.size() - sep.size());
+    }
 }
