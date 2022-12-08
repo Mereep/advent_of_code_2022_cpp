@@ -8,6 +8,7 @@
 #include "days/day5/day5.h"
 #include "days/day6/day6.h"
 #include "days/day7/day7.h"
+#include "days/day8/day8.h"
 
 
 using namespace FileUtil;
@@ -28,10 +29,7 @@ int main() {
     cout << "Part 1: " << day1.part1() << endl;
     cout << "Part 2: " << day1.part2() << endl;
 
-    // Day2(std::vector<std::string>());
-    //Day2 day2 = Day::fromFile<Day2>(workDirStr + "/data/day2.txt");
-    //day2.play();
-    //MiscUtils::playDay(inDay2);
+
 
     string inDay2 = FileUtil::readFile(workDirStr + "/data/day2.txt");
     auto lines2 = FileUtil::splitLines(inDay2);
@@ -39,6 +37,11 @@ int main() {
     cout << "Day 2" << endl << "=====" << endl;
     cout << "Part 1: " << day2.part1() << endl;
     cout << "Part 2: " << day2.part2() << endl;
+
+    //Day2(std::vector<std::string>());
+    // Day2 day = Day::fromFile<Day2>(workDirStr + "/data/day2.txt");
+    // day2.play();
+    //MiscUtils::playDay(inDay2);
 
     string inDay3 = FileUtil::readFile(workDirStr + "/data/day3.txt");
     auto lines3 = FileUtil::splitLines(inDay3);
@@ -74,6 +77,13 @@ int main() {
     cout << "Day 7" << endl << "=====" << endl;
     cout << "Part 1: " << day7.part1() << endl;
     cout << "Part 2: " << day7.part2() << endl;
+
+    string inDay8 = FileUtil::readFile(workDirStr + "/data/day8.txt");
+    auto lines8 = FileUtil::splitLines(inDay8);
+    Day8 day8(lines8);
+    cout << "Day 8" << endl << "=====" << endl;
+    cout << "Part 1: " << day8.part1() << endl;
+    cout << "Part 2: " << day8.part2() << endl;
 
     return 0;
 }
