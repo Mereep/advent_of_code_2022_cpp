@@ -27,7 +27,8 @@ namespace MiscUtils {
     }
 
     string trim(const string& str) {
-        return regex_replace(str, regex("\\s+"), string(""));
+        auto leftTrimmed = regex_replace(str, regex("^\\s+"), string(""));
+        return regex_replace(leftTrimmed, regex("\\s+$"), string(""));
     }
 
     string join(const vector<string>& elements, const string& sep) {

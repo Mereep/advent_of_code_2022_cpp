@@ -21,5 +21,6 @@ add_executable(
         days/day6/day6.cpp days/day6/day6.h
         days/day7/day7.cpp days/day7/day7.h
         days/day8/day8.cpp days/day8/day8.h
+        days/day9/day9.cpp days/day9/day9.h
         main.cpp
         )
