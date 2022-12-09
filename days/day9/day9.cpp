@@ -174,6 +174,4 @@ std::string Day9::part2() {
     }
 
     return to_string(field.trace.size());
-
-    return "not implemented";
 }
