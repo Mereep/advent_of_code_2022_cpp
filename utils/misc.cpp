@@ -38,4 +38,12 @@ namespace MiscUtils {
         }
         return result.substr(0, result.size() - sep.size());
     }
+
+    tuple<string, string> split(const string& str, const string& sep) {
+        auto pos = str.find(sep);
+        if (pos == string::npos) {
+            return {str, ""};
+        }
+        return {str.substr(0, pos), str.substr(pos + sep.size())};
+    }
 }

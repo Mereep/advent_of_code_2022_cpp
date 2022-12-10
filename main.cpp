@@ -10,6 +10,7 @@
 #include "days/day7/day7.h"
 #include "days/day8/day8.h"
 #include "days/day9/day9.h"
+#include "days/day10/day10.h"
 
 
 using namespace FileUtil;
@@ -92,6 +93,13 @@ int main() {
     cout << "Day 9" << endl << "=====" << endl;
     cout << "Part 1: " << day9.part1() << endl;
     cout << "Part 2: " << day9.part2() << endl;
+
+    string inDay10 = FileUtil::readFile(workDirStr + "/data/day10.txt");
+    auto lines10 = FileUtil::splitLines(inDay10);
+    Day10 day10(lines10);
+    cout << "Day 10" << endl << "=====" << endl;
+    cout << "Part 1: " << day10.part1() << endl;
+    cout << "Part 2: " << day10.part2() << endl;
 
     return 0;
 }
