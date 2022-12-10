@@ -12,10 +12,10 @@
  * Represents one command tha `Cpu` can execute
  */
 struct Command {
-    /** as in addx, subx, etc. **/
+    /** as in addx, subx, etc.   we actually only need addx and noop) **/
     string name;
 
-    /** as in r1, r2, etc. **/
+    /** like 1, or -30, if any, otherwise gibberish */
     int value;
 
     static Command fromString(const string& line) {
@@ -33,7 +33,7 @@ struct Command {
         };
     }
 
-    /** how many cycles a command needs **/
+    /** how many cycles this command needs **/
     [[nodiscard]] int cycles() const {
 
         if(name == "addx") {
@@ -51,6 +51,9 @@ struct Command {
 struct Cpu {
     /** stores the registers' value over cycles
      * as in ('x' -> [0, 10, -2, 0, ....])
+     *
+     * Hint: our machine only has a `x` register
+     * but hey, maybe you want to build your NextGen CPU based on that ;-)
      **/
     map<string, vector<int>> cycle_history;
 
@@ -86,16 +89,17 @@ struct Cpu {
             }
         }
 
-       if (command.name.starts_with("add")) {
-           string reg = command.name.substr(command.name.size() - 1);
+        // add operation
+        if (command.name.starts_with("add")) {
+            // read register (will always be `x` here)
+            string reg = command.name.substr(command.name.size() - 1);
             computationalResult[reg] = current_value(reg, true) + command.value;
-       }
-
-       else if(command.name.starts_with("noop")) {
-           // do nothing
-       } else {
-           throw runtime_error("Don't know how to execute: " + command.name);
-       }
+        }
+        else if(command.name.starts_with("noop")) {
+            // do nothing
+        } else {
+            throw runtime_error("Don't know how to execute: " + command.name);
+        }
 
     }
 
@@ -173,19 +177,28 @@ std::string Day10::part2() {
         cpu.execute(command);
     }
 
-    // create an array with 60 * 4 elements representing the pixels on a crt screen
+    // create an array with 40 * 6 elements representing the pixels on a crt screen
+    // (flattened)
     bool screen[40 * 6] = {};
 
+    // iterate over all the past cycles
     for (int i = 0; i <= cpu.cycle_history["x"].size(); i++) {
+        // check the position of the sprite (x-register)
         int sprite_position = cpu.value_at_time(i + 1, "x");
+
+        // calc the CRTs rendering position
         uint screen_pos = i % (40 * 6);
+
+        // calc the x part of the positon
         uint screen_x = screen_pos % 40;
 
+        // our sprite is 3 pixels wide and if we hit it we draw the pixel
         if (sprite_position == screen_x || sprite_position + 1 == screen_x || sprite_position - 1 == screen_x) {
             screen[screen_pos] = true;
         }
     }
 
+    // make as a string
     std::stringstream ss;
     ss << endl;
     for(uint y = 0; y < 6; y++) {
