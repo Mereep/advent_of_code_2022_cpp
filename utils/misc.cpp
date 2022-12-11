@@ -4,7 +4,6 @@
 #include <iostream>
 #include <regex>
 #include <string>
-
 #include "file.h"
 #include "misc.h"
 
@@ -46,4 +45,35 @@ namespace MiscUtils {
         }
         return {str.substr(0, pos), str.substr(pos + sep.size())};
     }
+
+    /** Splits lines on containers separated by lines being equal to sep **/
+    vector<vector<string>> split_lines(const vector<string>& lines, const string& sep) {
+        vector<vector<string>> result = {};
+        vector<string> curr = {};
+        for (const string& line : lines) {
+            if (line == sep) {
+                result.push_back(curr);
+                curr = {};
+            } else {
+                curr.push_back(line);
+            }
+        }
+
+        // add the last
+        result.push_back(curr);
+
+        return result;
+    }
+
+    vector<string> parse_regex(const string& line, const string& re) {
+        vector<string> result = {};
+        smatch match;
+        string remainder = line;
+        while (regex_search(remainder, match, regex(re))) {
+            result.push_back(match.str(0));
+            remainder = match.suffix();
+        }
+        return result;
+    }
+
 }

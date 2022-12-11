@@ -13,5 +13,7 @@ namespace MiscUtils {
     string trim(const string& str);
     string join(const vector<string>&, const string&);
     tuple<string, string> split(const string&, const string&);
+    vector<vector<string>> split_lines(const vector<string>&, const string&);
+    vector<string> parse_regex(const string&, const string&);
     }
 #endif //ADVENT_OF_CODE_2022_MISC_H

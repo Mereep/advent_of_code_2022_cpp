@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <map>
-#include <utility>
 #include <sstream>
 #include "day10.h"
 #include "../../utils/misc.h"
@@ -177,6 +176,7 @@ std::string Day10::part2() {
         cpu.execute(command);
     }
 
+
     // create an array with 40 * 6 elements representing the pixels on a crt screen
     // (flattened)
     bool screen[40 * 6] = {};
@@ -188,12 +188,14 @@ std::string Day10::part2() {
 
         // calc the CRTs rendering position
         uint screen_pos = i % (40 * 6);
-
-        // calc the x part of the positon
+        // calc the x part of the position
         uint screen_x = screen_pos % 40;
 
+        bool set_pixel = sprite_position == screen_x || sprite_position + 1 == screen_x || sprite_position - 1 == screen_x;
+        // cout << screen_x << "," << sprite_position << ',' << set_pixel << endl;
+
         // our sprite is 3 pixels wide and if we hit it we draw the pixel
-        if (sprite_position == screen_x || sprite_position + 1 == screen_x || sprite_position - 1 == screen_x) {
+        if (set_pixel) {
             screen[screen_pos] = true;
         }
     }
