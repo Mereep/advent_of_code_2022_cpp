@@ -142,17 +142,28 @@ struct Test {
     }
 };
 
+/*** one Monkey does some Operation on worry levels, has some Items and tests the operation to decide where to throw
+ * it next
+ */
 struct Monkey {
     vector<Item> items;
     Operation operation;
     Test test;
 
+    // we need to count how often a monkey has thrown for the results
     uint thrown_items = 0;
 };
 
+/*** Playing field with some monkeys **/
 struct MonkeyLand {
+
+    // the actual monkeys
     vector<Monkey> monkeys;
+
+    // we need this to keep worry levels tamed
     long divisor_product = 0;
+
+    // we do not need that (just for debugging)
     uint round = 0;
 
     static MonkeyLand from_input(const vector<string> &lines) {
@@ -210,18 +221,27 @@ struct MonkeyLand {
                 // keep the worry-level small enough
                 if(result >= divisor_product) {
                     result_new = result - ((result / divisor_product) * divisor_product);
+
+                    // this is a sanity test for debugging
+                    // (new result should yield the same remainder for all divisors)
+                    /*
                     for(auto& monkey2: monkeys) {
                         if (result % monkey2.test.value != result_new % monkey2.test.value) {
                             throw runtime_error("asldkaslök");
                         }
 
-                    }
+                    }*/
+
                 }
 
+                // hand over the item
                 monkeys.at(new_monkey).items.emplace_back(Item{.worry_level = result_new});
 
+                // each item counts as throw
                 monkey.thrown_items++;
             }
+
+            // the monkey looses its own items (it throws them all)
             monkey.items = {};
         }
     }
@@ -229,22 +249,28 @@ struct MonkeyLand {
 
 std::string Day11::part1() {
     MonkeyLand ml = MonkeyLand::from_input(lines);
+
+    // play 20 rounds
     for(uint i = 0; i < 20; i++) {
         ml.do_round(true);
     }
 
+    // find the two highest worry-levels
     vector<uint> throw_counts = {};
     for(const auto& monkey: ml.monkeys) {
         throw_counts.emplace_back(monkey.thrown_items);
     }
-
     sort(throw_counts.begin(), throw_counts.end());
+
+    // and return
     return to_string(throw_counts.at(throw_counts.size() - 1) * throw_counts.at(throw_counts.size() - 2));
 }
 
 
 std::string Day11::part2() {
     MonkeyLand ml = MonkeyLand::from_input(lines);
+
+    // as part one but 10k rounds
     for(uint i = 0; i < 10'000; i++) {
         ml.do_round(false);
     }
