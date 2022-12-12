@@ -1,3 +1,3 @@
-cmake CmakeLists.txt
-make
-WORK_DIR=$PWD ./advent_of_code_2022
+cmake -S . -B build
+make -C build
+WORK_DIR=$PWD ./build/aoc
